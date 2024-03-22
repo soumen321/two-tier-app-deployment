@@ -1,6 +1,5 @@
 # Two Tier Node Application
 
-Jenkins CI/CD Pipeline - SonarQube, Docker,Multistage Docker Image, Docker Compose, Github Webhooks
 
 Building a two-tier Node.js application and deploying it with a CI/CD pipeline using Jenkins, SonarQube, Docker, Multistage Docker Image, Docker Compose, and GitHub Webhooks involves:
 
@@ -21,6 +20,7 @@ Building a two-tier Node.js application and deploying it with a CI/CD pipeline u
 **Monitoring:** Integrate monitoring and logging solutions for real-time insights.
 
 **Documentation:** Document the pipeline setup and deployment process for collaboration and knowledge sharing.
+
 
 
 
