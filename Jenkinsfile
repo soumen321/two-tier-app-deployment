@@ -30,7 +30,7 @@ pipeline {
                 
                 
                withSonarQubeEnv("sonar-server"){
-                   sh "$SONAR_HOME/bin/sonar-scanner -Dsonar.projectName=reminder-app-compose -Dsonar.projectKey=reminder-app-compose -X"
+                   sh "$SONAR_HOME/bin/sonar-scanner -Dsonar.projectName=two-tier-remider-app -Dsonar.projectKey=two-tier-remider-app -X"
                }
             }
             
