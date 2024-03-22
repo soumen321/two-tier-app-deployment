@@ -2,7 +2,7 @@ version : '3'
 services :
 # frontend service
   reminderapp:
-    image : techsoumen/node-reminder-app:${TAG}
+    image : techsoumen/two-tier-remider-app:${VERSION}
     #build: 
     #  context: .
     #  dockerfile: build/Dockerfile.prod
