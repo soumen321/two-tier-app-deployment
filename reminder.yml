@@ -26,9 +26,7 @@ services :
     - MONGO_INITDB_ROOT_USERNAME=${MONGO_ADMIN_USERNAME}
     - MONGO_INITDB_ROOT_PASSWORD=${MONGO_ADMIN_PASSWORD}
     volumes:
-     - type: volume
-       source: mongo_data
-       target: /data/db
+     - mongo_data:/data/db
     networks :
      - reminder-network  
 
