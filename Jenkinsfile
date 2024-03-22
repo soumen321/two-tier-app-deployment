@@ -20,7 +20,7 @@ pipeline {
         stage('Build'){
             steps {
                 echo "Building the code"
-                sh "docker build -t two-tier-remider-app ." 
+                sh "docker build -t two-tier-remider-app ./build/Dockerfile.prod" 
             }
             
         }
@@ -39,7 +39,7 @@ pipeline {
             steps {
                 echo "Pushing the image to dicker image"
                 withCredentials([usernamePassword(credentialsId:"dockerHub",passwordVariable:"dockerHubPass",usernameVariable:"dockerHubUser")]){
-                sh "docker tag my-remider-app ${env.dockerHubUser}/two-tier-remider-app:${VERSION}"    
+                sh "docker tag two-tier-remider-app ${env.dockerHubUser}/two-tier-remider-app:${VERSION}"    
                 sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}" 
                 sh "docker push ${env.dockerHubUser}/two-tier-remider-app:${VERSION}"
                 }
