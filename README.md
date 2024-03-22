@@ -1,6 +1,2 @@
-<<<<<<< HEAD
-# two-tier-app-deployment
-=======
-# Two Tier Node Application
 
->>>>>>> fth-multistage
+# Two Tier Node Application
