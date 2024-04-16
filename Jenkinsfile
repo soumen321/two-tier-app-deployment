@@ -35,6 +35,12 @@ pipeline {
             }
             
         }
+        stage('trivy') {
+            steps {
+               sh "trivy trivy image ${env.dockerHubUser}/two-tier-remider-app:${VERSION}"
+            }
+        }
+
         stage('Push to Docker Hub'){
             steps {
                 echo "Pushing the image to dicker image"
