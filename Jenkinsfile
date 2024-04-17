@@ -39,7 +39,7 @@ pipeline {
            
              steps {
                 echo "Trivy scan"
-                sh "trivy image --format table -o trivy-image-report.html techsoumen/two-tier-remider-app:${VERSION} "
+                sh "trivy image techsoumen/two-tier-remider-app:${VERSION} "
             }
           
         }
