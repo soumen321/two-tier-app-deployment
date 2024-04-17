@@ -26,8 +26,7 @@ pipeline {
         }
         stage('SonarQube Analysis'){
             steps {
-                echo "Sonarqube scan"
-                
+                echo "Sonarqube scan"              
                 
                withSonarQubeEnv("sonar-server"){
                    sh "$SONAR_HOME/bin/sonar-scanner -Dsonar.projectName=two-tier-remider-app -Dsonar.projectKey=two-tier-remider-app -X"
@@ -35,9 +34,11 @@ pipeline {
             }
             
         }
-        stage('trivy') {
-            echo "Trivy scan"
+       
+        stage('Trivy Docker Image Scan') {
+           
              steps {
+                echo "Trivy scan"
                 sh "trivy image --format table -o trivy-image-report.html techsoumen/two-tier-remider-app:${VERSION} "
             }
           
