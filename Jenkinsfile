@@ -38,7 +38,7 @@ pipeline {
         stage('trivy') {
             steps {
                echo "Trivy scan"
-               sh "trivy trivy image ${env.dockerHubUser}/two-tier-remider-app:${VERSION}"
+               sh "trivy trivy image two-tier-remider-app:${VERSION}"
             }
         }
 
