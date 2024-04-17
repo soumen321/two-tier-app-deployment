@@ -20,7 +20,7 @@ pipeline {
         stage('Build'){
             steps {
                 echo "Building the code"
-                sh "docker build -t two-tier-remider-app -f ./build/Dockerfile.prod ." 
+                sh "docker build -t two-tier-remider-app:${VERSION} -f ./build/Dockerfile.prod ." 
             }
             
         }
