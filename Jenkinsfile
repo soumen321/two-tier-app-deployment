@@ -36,10 +36,11 @@ pipeline {
             
         }
         stage('trivy') {
-            steps {
-               echo "Trivy scan"
-               sh "trivy image techsoumen/two-tier-remider-app:${VERSION}"
+            echo "Trivy scan"
+             steps {
+                sh "trivy image --format table -o trivy-image-report.html techsoumen/two-tier-remider-app:${VERSION} "
             }
+          
         }
 
         stage('Push to Docker Hub'){
