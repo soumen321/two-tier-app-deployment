@@ -38,7 +38,7 @@ pipeline {
         stage('trivy') {
             steps {
                echo "Trivy scan"
-               sh "trivy image two-tier-remider-app:${VERSION}"
+               sh "trivy image techsoumen/two-tier-remider-app:${VERSION}"
             }
         }
 
