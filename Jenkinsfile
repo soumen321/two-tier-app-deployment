@@ -17,13 +17,12 @@ pipeline {
                 git url:"https://github.com/soumen321/two-tier-app-deployment.git",branch : "main"
             }
         }
-        stage('Build'){
-            steps {
-                echo "Building the code"
-                sh "docker build -t two-tier-remider-app:${VERSION} -f ./build/Dockerfile.prod ." 
-            }
-            
-        }
+         stage('Trivy FS Scan') { 
+            steps { 
+                sh "trivy fs --format table -o fs-report.html ." 
+            } 
+        } 
+       
         stage('SonarQube Analysis'){
             steps {
                 echo "Sonarqube scan"              
@@ -31,6 +30,14 @@ pipeline {
                withSonarQubeEnv("sonar-server"){
                    sh "$SONAR_HOME/bin/sonar-scanner -Dsonar.projectName=two-tier-remider-app -Dsonar.projectKey=two-tier-remider-app -X"
                }
+            }
+            
+        }
+
+         stage('Build'){
+            steps {
+                echo "Building the code"
+                sh "docker build -t two-tier-remider-app:${VERSION} -f ./build/Dockerfile.prod ." 
             }
             
         }
