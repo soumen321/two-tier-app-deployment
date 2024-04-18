@@ -6,7 +6,7 @@ pipeline {
     }
     
     environment {
-        VERSION = "2.0"
+        VERSION = "3.0"
         SONAR_HOME = tool 'sonar-scanner' 
     }
     
