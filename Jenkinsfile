@@ -6,7 +6,7 @@ pipeline {
     }
     
     environment {
-        VERSION = "3.0"
+        VERSION = "4.0"
         SONAR_HOME = tool 'sonar-scanner' 
     }
     
@@ -55,7 +55,7 @@ pipeline {
             steps {
                 echo "Pushing the image to dicker image"
                 withCredentials([usernamePassword(credentialsId:"dockerHub",passwordVariable:"dockerHubPass",usernameVariable:"dockerHubUser")]){
-                sh "docker tag two-tier-remider-app ${env.dockerHubUser}/two-tier-remider-app:${VERSION}"    
+                sh "docker tag two-tier-remider-app:${VERSION} ${env.dockerHubUser}/two-tier-remider-app:${VERSION}"    
                 sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}" 
                 sh "docker push ${env.dockerHubUser}/two-tier-remider-app:${VERSION}"
                 }
@@ -63,7 +63,7 @@ pipeline {
         }
         stage('Deploy'){
             steps {
-                echo "Deploying the coniainer"
+                echo "Deploying the container"
                 sh "docker-compose -f reminder.yml down && VERSION=${VERSION} docker-compose -f reminder.yml up -d"
             }
         }
