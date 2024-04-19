@@ -48,7 +48,7 @@ services :
 networks:
   reminder-network: 
    driver: bridge
-   external : false
+   #external : false
 
 volumes :
   mongo_data:
